@@ -84,9 +84,23 @@ python ".\\p4-review-changelist\\scripts\\cleanup_export.py" --output-dir "C:\\U
 - 你在 review pending CL，且 `p4 describe -du` 结果不完整
 - 你想让工具自动识别“当前这批改动基本都是二进制，无法直接做代码审查”
 
+## 安全检查
+
+仓库内置了一个本地安全检查脚本，用于在提交前扫描常见的敏感信息模式，例如 token、password、private key、authorization header 等。
+
+手动执行：
+
+```powershell
+python ".\\tools\\security_check.py" --repo .
+```
+
+当前仓库还接入了 `pre-commit` hook，默认会在每次 `git commit` 前自动检查已暂存文件；如果发现疑似敏感信息，会直接阻止提交。
+
 ## 注意事项
 
 - 这个仓库是一个 skill 库，不是独立应用程序
 - 如果 Perforce 环境未配置正确，脚本会直接报出环境问题，而不是盲目继续
 - 如果 changelist 主要由二进制文件组成，skill 只会给出低置信度结论
 - 当前实现会保留旧的导出目录，只有在显式执行清理脚本或评审结束流程触发清理时才删除
+- 当前安全检查以常见模式匹配为主，能拦住大多数误提交，但不能替代正式的代码审计或 CI 安全扫描
+
