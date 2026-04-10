@@ -40,12 +40,14 @@ Typical location:
 
 If you are cloning this repository for local use, copy or symlink only the inner `p4-review-changelist` folder into `%USERPROFILE%\\.codex\\skills`.
 
+For Chinese instructions, see [`README_zh.md`](./README_zh.md).
+
 ## Basic usage
 
 Ask Codex with a changelist number, for example:
 
 ```text
-请帮我 review P4 changelist 6969680
+Please review P4 changelist 6969680
 ```
 
 The skill will usually:
@@ -79,5 +81,5 @@ python ".\\p4-review-changelist\\scripts\\cleanup_export.py" --output-dir "C:\\U
 ## Notes
 
 - this repository is intended to be shared as a skill library, not as an application package
-- the exporter now preserves older review exports until explicit cleanup, which is safer for follow-up review rounds
+- the exporter preserves older review exports until explicit cleanup, which is safer for follow-up review rounds
 - binary-only CLs are reported as low-confidence instead of being treated like normal source reviews
