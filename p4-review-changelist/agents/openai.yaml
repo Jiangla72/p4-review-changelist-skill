@@ -1,0 +1,4 @@
+interface:
+  display_name: "P4 Changelist Review"
+  short_description: "Review a Perforce changelist by CL number"
+  default_prompt: "Use $p4-review-changelist to inspect Perforce changelist 123456, give me a quick first-pass verdict, and only deepen the review if the initial result suggests it."
